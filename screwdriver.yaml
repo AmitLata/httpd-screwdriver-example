@@ -10,6 +10,8 @@ shared:
   #
   # (Source: centos)
   image: centos:7
+  steps:
+    - init: git install
 
 # Job definition block
 # "main" is a default job that all pipelines have
