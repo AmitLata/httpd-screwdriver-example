@@ -27,7 +27,8 @@ jobs:
     requires: [~pr, ~commit]
     # Steps is the list of commands to execute.
     steps:
-      - install_yum: yum -y install git httpd
+      - print_yum: echo installing git and httpd service
+      # - install_yum: yum -y install git httpd
       # Each step takes the form "step_name: command_to_run".
       # The "step_name" is a convenient label to reference it by. The
       # "command_to_run" is the single command that is executed during this
@@ -42,11 +43,12 @@ jobs:
       # The "make_target" step calls a Makefile target to perform some set of
       # actions. This is incredibly useful when you need to perform a multi-line
       # command.
-      - cp_idx: copy index.html /var/www/html
-      - cp_err: copy err.html /var/www/html
-      - echo_idx: echo $HOSTNAME >> /var/www/html/index.html
-      - start_httpd: service httpd restart
-      - config_httpd: systemctl enable httpd.service
+      # - cp_idx: copy index.html /var/www/html
+      # - cp_err: copy err.html /var/www/html
+      # - echo_idx: echo $HOSTNAME >> /var/www/html/index.html
+      - print_start: echo Starting httpd service
+      # - start_httpd: service httpd restart
+      # - config_httpd: systemctl enable httpd.service
       # The "run_arbitrary_script" executes a script. This is an alternative to
       # a Makefile target where you want to run a series of commands related to
       # this step
