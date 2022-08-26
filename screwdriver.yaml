@@ -42,10 +42,6 @@ jobs:
       # The "make_target" step calls a Makefile target to perform some set of
       # actions. This is incredibly useful when you need to perform a multi-line
       # command.
-      - git_clone: git clone https://github.com/AmitLata/httpd-screwdriver-example.git
-#      - chg_dir: cd httpd-screwdriver-example
-      - mk_dir: mkdir -p /var/www/html
-      - rm_file: rm -rf /var/www/html/index.html
       - cp_idx: copy index.html /var/www/html
       - cp_err: copy err.html /var/www/html
       - echo_idx: echo $HOSTNAME >> /var/www/html/index.html
