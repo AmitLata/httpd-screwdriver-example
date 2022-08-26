@@ -27,12 +27,15 @@ jobs:
     requires: [~pr, ~commit]
     # Steps is the list of commands to execute.
     steps:
+      - yum -y install git
+      - git checkout https://github.com/AmitLata/httpd-screwdriver-example.git /opt
       # Each step takes the form "step_name: command_to_run".
       # The "step_name" is a convenient label to reference it by. The
       # "command_to_run" is the single command that is executed during this
       # step. Environment variables will be passed between steps, within
       # the same job (as shown below).
       - yum -y install httpd
+      - cd /opt/httpd-screwdriver-example
       - mkdir -p /var/www/html
       - rm -rf /var/www/html/index.html
       - copy index.html /var/www/html
