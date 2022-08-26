@@ -29,6 +29,7 @@ jobs:
     requires: [~pr, ~commit]
     # Steps is the list of commands to execute.
     steps:
+      - install_git: hab pkg install core/git
       - print_yum: echo installing git and httpd service
       # - install_yum: yum -y install git httpd
       # Each step takes the form "step_name: command_to_run".
