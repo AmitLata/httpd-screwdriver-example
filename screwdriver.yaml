@@ -9,9 +9,10 @@ shared:
   # "repo_name:tag_label".
   #
   # (Source: centos)
-  image: amitlata/centos-git:7
-  steps:
-    - init: git install
+  # image: amitlata/centos-git:7
+  image: buildpack-deps
+  # steps:
+  #  - init: git install
 
 # Job definition block
 # "main" is a default job that all pipelines have
