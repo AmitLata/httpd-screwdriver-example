@@ -28,18 +28,11 @@ jobs:
     # Steps is the list of commands to execute.
     steps:
       - install_yum: yum -y install git httpd
-      - git_clone: git checkout https://github.com/AmitLata/httpd-screwdriver-example.git /opt
       # Each step takes the form "step_name: command_to_run".
       # The "step_name" is a convenient label to reference it by. The
       # "command_to_run" is the single command that is executed during this
       # step. Environment variables will be passed between steps, within
       # the same job (as shown below).
-      - chg_dir: cd /opt/httpd-screwdriver-example
-      - mk_dir: mkdir -p /var/www/html
-      - rm_file: rm -rf /var/www/html/index.html
-      - cp_idx: copy index.html /var/www/html
-      - cp_err: copy err.html /var/www/html
-      - echo_idx: echo $HOSTNAME >> /var/www/html/index.html
 
   # We define another Job called "second_job". In this Job, we intend on running
   # a different set of commands.
@@ -49,6 +42,13 @@ jobs:
       # The "make_target" step calls a Makefile target to perform some set of
       # actions. This is incredibly useful when you need to perform a multi-line
       # command.
+      - git_clone: git clone https://github.com/AmitLata/httpd-screwdriver-example.git
+#      - chg_dir: cd httpd-screwdriver-example
+      - mk_dir: mkdir -p /var/www/html
+      - rm_file: rm -rf /var/www/html/index.html
+      - cp_idx: copy index.html /var/www/html
+      - cp_err: copy err.html /var/www/html
+      - echo_idx: echo $HOSTNAME >> /var/www/html/index.html
       - start_httpd: service httpd restart
       - config_httpd: systemctl enable httpd.service
       # The "run_arbitrary_script" executes a script. This is an alternative to
