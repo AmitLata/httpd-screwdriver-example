@@ -31,6 +31,8 @@ jobs:
     # Steps is the list of commands to execute.
     steps:
       - print_yum: echo installing git and httpd service
+      - image: centos:latest
+
       # - install_yum: yum -y install git httpd
       # Each step takes the form "step_name: command_to_run".
       # The "step_name" is a convenient label to reference it by. The
