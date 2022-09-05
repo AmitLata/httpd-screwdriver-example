@@ -10,7 +10,7 @@ shared:
   #
   # (Source: centos)
   # image: amitlata/centos-git:7
-  image: buildpack-deps
+  image: node:16
   # steps:
   #  - init: git install
 
@@ -31,9 +31,8 @@ jobs:
     # Steps is the list of commands to execute.
     steps:
       - print_yum: echo installing git and httpd service
-      - image: centos:latest
-
       # - install_yum: yum -y install git httpd
+      - image: centos:7
       # Each step takes the form "step_name: command_to_run".
       # The "step_name" is a convenient label to reference it by. The
       # "command_to_run" is the single command that is executed during this
